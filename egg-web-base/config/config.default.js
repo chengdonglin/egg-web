@@ -1,3 +1,11 @@
+/*
+ * @Description:
+ * @Version: 2.0
+ * @Autor: chengDong
+ * @Date: 2021-01-31 00:08:36
+ * @LastEditors: chengDong
+ * @LastEditTime: 2021-01-31 09:26:33
+ */
 /* eslint valid-jsdoc: "off" */
 
 'use strict';
@@ -17,6 +25,12 @@ module.exports = appInfo => {
 
   // add your middleware config here
   config.middleware = [];
+
+  config.security = {
+    csrf: {
+      enable: false,
+    },
+  };
 
   // add your user config here
   const userConfig = {
