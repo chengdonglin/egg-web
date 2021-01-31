@@ -4,7 +4,7 @@
  * @Autor: chengDong
  * @Date: 2021-01-31 00:08:36
  * @LastEditors: chengDong
- * @LastEditTime: 2021-01-31 17:32:44
+ * @LastEditTime: 2021-01-31 17:43:30
  */
 'use strict';
 
@@ -24,6 +24,12 @@ class HomeController extends Controller {
     const allPack = app.allPackage
     console.log(allPack)
     ctx.body = packageInfo
+  }
+
+  async newContext() {
+    const { ctx } = this;
+    const params = ctx.params('name')
+    ctx.body = params
   }
 }
 
