@@ -4,12 +4,13 @@
  * @Autor: chengDong
  * @Date: 2021-01-31 00:08:36
  * @LastEditors: chengDong
- * @LastEditTime: 2021-01-31 09:26:33
+ * @LastEditTime: 2021-01-31 16:54:27
  */
 /* eslint valid-jsdoc: "off" */
 
 'use strict';
 
+const path = require('path')
 /**
  * @param {Egg.EggAppInfo} appInfo app info
  */
@@ -24,13 +25,23 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1612022867465_4420';
 
   // add your middleware config here
-  config.middleware = [];
+  config.middleware = ['httpLog'];
+
+  config.httpLog = {
+    type:'web'
+  }
 
   config.security = {
     csrf: {
       enable: false,
     },
   };
+
+  config.customLogger = {
+    web:{
+      file: path.join(appInfo.root,'logs/web.log')
+    }
+  }
 
   // add your user config here
   const userConfig = {
@@ -40,5 +51,6 @@ module.exports = appInfo => {
   return {
     ...config,
     ...userConfig,
+
   };
 };
