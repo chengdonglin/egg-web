@@ -4,7 +4,7 @@
  * @Autor: chengDong
  * @Date: 2021-01-31 08:38:02
  * @LastEditors: chengDong
- * @LastEditTime: 2021-01-31 09:51:54
+ * @LastEditTime: 2021-01-31 10:22:41
  */
 'use strict';
 const Controller = require('egg').Controller;
@@ -18,6 +18,8 @@ class UserController extends Controller {
   async detail() {
     const { ctx } = this;
     console.log(ctx.query);
+    const detail = await ctx.service.user.detail(10);
+    console.log(detail);
     ctx.body = ctx.query.age;
   }
 
