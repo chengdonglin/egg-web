@@ -4,7 +4,7 @@
  * @Autor: chengDong
  * @Date: 2021-01-31 00:08:36
  * @LastEditors: chengDong
- * @LastEditTime: 2021-01-31 17:43:30
+ * @LastEditTime: 2021-01-31 21:01:33
  */
 'use strict';
 
@@ -30,6 +30,17 @@ class HomeController extends Controller {
     const { ctx } = this;
     const params = ctx.params('name')
     ctx.body = params
+  }
+
+  async newRequest() {
+    const { ctx } = this
+    return ctx.body = ctx.request.token
+  }
+
+  async newResponse() {
+    const { ctx } = this
+    ctx.response.token = ctx.request.token
+    return ctx.body = 'new response'
   }
 }
 
