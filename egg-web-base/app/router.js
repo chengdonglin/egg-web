@@ -4,7 +4,7 @@
  * @Autor: chengDong
  * @Date: 2021-01-31 00:08:36
  * @LastEditors: chengDong
- * @LastEditTime: 2021-01-31 08:42:24
+ * @LastEditTime: 2021-01-31 09:15:55
  */
 'use strict';
 
@@ -15,4 +15,6 @@ module.exports = app => {
   const { router, controller } = app;
   router.get('/', controller.home.index);
   router.get('/user', controller.user.index);
+  router.get('/user/detail', controller.user.detail);
+  router.get('/user/detail/:id', controller.user.pathviable);
 };
