@@ -4,7 +4,7 @@
  * @Autor: chengDong
  * @Date: 2021-01-31 16:09:02
  * @LastEditors: chengDong
- * @LastEditTime: 2021-01-31 16:55:30
+ * @LastEditTime: 2021-02-01 17:06:05
  */
 module.exports = options => {
     return async (ctx,next) => {
@@ -14,6 +14,7 @@ module.exports = options => {
         const req = ctx.request;
         await next();
         const log = {
+            streamid: ctx.request.streamId,
             method: req.method,
             url: req.url,
             data: req.body,
