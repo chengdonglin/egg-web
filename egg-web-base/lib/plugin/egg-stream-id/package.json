@@ -1,0 +1,6 @@
+{
+    "name": "egg-stream-id",
+    "eggPlugin":{
+        "name":"streamid"
+    }
+}
