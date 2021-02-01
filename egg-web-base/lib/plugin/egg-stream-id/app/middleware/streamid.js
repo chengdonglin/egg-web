@@ -4,11 +4,12 @@
  * @Autor: chengDong
  * @Date: 2021-02-01 16:30:36
  * @LastEditors: chengDong
- * @LastEditTime: 2021-02-01 16:39:36
+ * @LastEditTime: 2021-02-01 17:00:58
  */
+const { v4 : uuidv4 } = require('uuid')
 module.exports = options => {
     return async (ctx, next) => {
-        ctx.request.streamId = Date.now()
+        ctx.request.streamId = uuidv4()
         await next()
     }
 }
