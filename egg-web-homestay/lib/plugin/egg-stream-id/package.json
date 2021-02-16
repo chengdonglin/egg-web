@@ -1,0 +1,9 @@
+{
+    "name": "egg-stream-id",
+    "eggPlugin": {
+        "name": "streamid"
+    },
+    "dependencies": {
+        "uuid": "^8.3.2"
+    }
+}
