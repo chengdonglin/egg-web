@@ -4,7 +4,7 @@
  * @Autor: chengDong
  * @Date: 2021-01-31 00:08:36
  * @LastEditors: chengDong
- * @LastEditTime: 2021-02-16 22:53:38
+ * @LastEditTime: 2021-02-16 23:52:07
  */
 'use strict';
 
@@ -13,5 +13,6 @@
  */
 module.exports = app => {
   const { router, controller } = app;
-  router.post('/api/user/register',controller.user.register)
+  router.post('/api/user/register',controller.user.register);
+  router.post('/api/user/login',controller.user.login)
 };

@@ -4,20 +4,20 @@
  * @Autor: chengDong
  * @Date: 2021-01-31 10:18:38
  * @LastEditors: chengDong
- * @LastEditTime: 2021-02-16 22:57:57
+ * @LastEditTime: 2021-02-16 23:56:22
  */
 'use strict';
 const Service = require('egg').Service;
-
+const md5 = require('md5')
 class UserService extends Service {
-  async getUser(username) {
+  async getUser(username,password) {
     try {
-      const { ctx } = this;
+      const { ctx, app } = this;
+      const _where = password ? {username, password: md5(password + app.config.salt)} : { username }
       const result = await ctx.model.User.findOne({
-        where: {
-          username
-        }
+        where: _where
       })
+      return result
     } catch(error) {
       console.log(error)
       return null
