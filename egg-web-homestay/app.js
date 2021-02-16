@@ -4,9 +4,9 @@
  * @Autor: chengDong
  * @Date: 2021-01-31 21:44:45
  * @LastEditors: chengDong
- * @LastEditTime: 2021-02-16 23:15:17
+ * @LastEditTime: 2021-02-17 00:44:01
  */
 module.exports = app => {
-    // app.config.coreMiddleware.push(...['streamid','auth'])
-    app.config.coreMiddleware.push(...['streamid'])
+    app.config.coreMiddleware.push(...['streamid','auth'])
+    // app.config.coreMiddleware.push(...['streamid'])
 }

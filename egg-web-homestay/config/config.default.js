@@ -4,7 +4,7 @@
  * @Autor: chengDong
  * @Date: 2021-01-31 00:08:36
  * @LastEditors: chengDong
- * @LastEditTime: 2021-02-17 00:14:19
+ * @LastEditTime: 2021-02-17 00:45:17
  */
 /* eslint valid-jsdoc: "off" */
 
@@ -53,7 +53,7 @@ module.exports = appInfo => {
     },
   };
   config.auth = {
-    exclude: ['/home','/']
+    exclude: ['/api/user/login','/api/user/register']
   }
 
   config.customLogger = {
