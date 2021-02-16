@@ -4,7 +4,7 @@
  * @Autor: chengDong
  * @Date: 2021-02-16 22:51:08
  * @LastEditors: chengDong
- * @LastEditTime: 2021-02-16 23:08:22
+ * @LastEditTime: 2021-02-16 23:50:13
  */
 'use strict';
 const Controller = require('egg').Controller
@@ -27,14 +27,18 @@ class UserController extends Controller{
         const result = await ctx.service.user.add({
             ...params,
             password: md5(params.password + app.config.salt),
-            createTime:  dayjs().format('YYYY-MM-DD HH:mm:ss'),
-            updateTime:  dayjs().format('YYYY-MM-DD HH:mm:ss')
+            createTime:  ctx.helper.time(),
+            updateTime:  ctx.helper.time()
         })
         if(result) {
             ctx.body = {
                 status: 200,
                 msg: "注册成功",
-                data: result
+                data: {
+                    ...ctx.helper.unPick(result.dataValues,["password"]),
+                    createTime : ctx.helper.timestamp(result.createTime),
+                    updateTime : ctx.helper.timestamp(result.updateTime)
+                }
             }
         } else {
             ctx.body = {
