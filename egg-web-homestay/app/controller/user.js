@@ -4,7 +4,7 @@
  * @Autor: chengDong
  * @Date: 2021-02-16 22:51:08
  * @LastEditors: chengDong
- * @LastEditTime: 2021-02-17 00:40:26
+ * @LastEditTime: 2021-02-17 01:13:13
  */
 'use strict';
 const Controller = require('egg').Controller
@@ -21,6 +21,7 @@ class UserController extends Controller{
         const token = app.jwt.sign({
             username
         },app.config.jwt.secret);
+        await app.redis.set(username,token,'EX',7*24*60*60)
         return token;
     }
 
@@ -107,6 +108,8 @@ class UserController extends Controller{
     }
 
     async logout() {
+        const { ctx, app} = this;
+        await app.redis.del(ctx.username)
         try {
             ctx.body = {
                 status: 200,

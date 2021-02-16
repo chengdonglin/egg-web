@@ -4,7 +4,7 @@
  * @Autor: chengDong
  * @Date: 2021-01-31 00:08:36
  * @LastEditors: chengDong
- * @LastEditTime: 2021-02-17 00:45:17
+ * @LastEditTime: 2021-02-17 01:05:48
  */
 /* eslint valid-jsdoc: "off" */
 
@@ -26,15 +26,20 @@ module.exports = appInfo => {
 
   // add your middleware config here
   config.middleware = ['httpLog'];
-
   config.httpLog = {
     type:'web'
   }
-
   config.jwt = {
     secret: 'geewise'
   }
-
+  config.redis = {
+    client: {
+      port: 6379,          // Redis port
+      host: '127.0.0.1',   // Redis host
+      password: 'auth',
+      db: 0,
+    },
+  }
   config.sequelize = {
     dialect: 'mysql',
     host: '127.0.0.1',

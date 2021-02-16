@@ -4,7 +4,7 @@
  * @Autor: chengDong
  * @Date: 2021-01-31 00:08:36
  * @LastEditors: chengDong
- * @LastEditTime: 2021-02-17 00:13:01
+ * @LastEditTime: 2021-02-17 00:53:09
  */
 'use strict';
 
@@ -34,3 +34,9 @@ exports.jwt = {
   enable: true,
   package: 'egg-jwt'
 }
+
+// 启用egg-redis插件
+exports.redis = {
+  enable: true,
+  package: 'egg-redis',
+};
