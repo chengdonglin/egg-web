@@ -4,7 +4,7 @@
  * @Autor: chengDong
  * @Date: 2021-01-31 00:08:36
  * @LastEditors: chengDong
- * @LastEditTime: 2021-02-16 23:10:00
+ * @LastEditTime: 2021-02-17 00:14:19
  */
 /* eslint valid-jsdoc: "off" */
 
@@ -29,6 +29,10 @@ module.exports = appInfo => {
 
   config.httpLog = {
     type:'web'
+  }
+
+  config.jwt = {
+    secret: 'geewise'
   }
 
   config.sequelize = {
