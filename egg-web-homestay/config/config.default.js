@@ -4,7 +4,7 @@
  * @Autor: chengDong
  * @Date: 2021-01-31 00:08:36
  * @LastEditors: chengDong
- * @LastEditTime: 2021-01-31 22:27:58
+ * @LastEditTime: 2021-02-16 21:51:24
  */
 /* eslint valid-jsdoc: "off" */
 
@@ -31,6 +31,12 @@ module.exports = appInfo => {
     type:'web'
   }
 
+  config.sequelize = {
+    dialect: 'mysql',
+    host: '127.0.0.1',
+    port: 3306,
+    database: 'egg_house',
+  };
   config.security = {
     csrf: {
       enable: false,

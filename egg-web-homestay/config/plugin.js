@@ -4,7 +4,7 @@
  * @Autor: chengDong
  * @Date: 2021-01-31 00:08:36
  * @LastEditors: chengDong
- * @LastEditTime: 2021-02-01 16:42:52
+ * @LastEditTime: 2021-02-16 21:50:44
  */
 'use strict';
 
@@ -14,6 +14,11 @@ exports.validate = {
   enable: true,
   package: 'egg-validate',
 };
+
+exports.sequelize = {
+  enable: true,
+  package: 'egg-sequelize'
+}
 
 exports.auth = {
   enable: true,
