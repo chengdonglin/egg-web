@@ -4,7 +4,7 @@
  * @Autor: chengDong
  * @Date: 2021-02-16 22:51:08
  * @LastEditors: chengDong
- * @LastEditTime: 2021-02-17 00:27:55
+ * @LastEditTime: 2021-02-17 00:40:26
  */
 'use strict';
 const Controller = require('egg').Controller
@@ -12,7 +12,9 @@ const md5 = require('md5')
 const dayjs = require('dayjs')
 
 class UserController extends Controller{
-
+    /**
+     * 颁布jwt密钥
+     */
     async jwtSign() {
         const { ctx, app } = this;
         const username = ctx.request.body.username;
@@ -81,6 +83,41 @@ class UserController extends Controller{
                 }
             }
        }
+    }
+
+    async detail() {
+        const { ctx, app } = this;
+        const user = await ctx.service.user.getUser(ctx.username,null)
+        if(user) {
+            ctx.body = {
+                status: 200,
+                msg:'登录成功',
+                data: {
+                    ...ctx.helper.unPick(user.dataValues,["password"]),
+                    createTime : ctx.helper.timestamp(user.createTime),
+                    updateTime : ctx.helper.timestamp(user.updateTime),
+                }
+            }
+        } else {
+            ctx.body = {
+                status: 500,
+                msg: '用户不存在'
+            }
+        }
+    }
+
+    async logout() {
+        try {
+            ctx.body = {
+                status: 200,
+                msg:'退出成功'
+            }
+        } catch (error) {
+            ctx.body = {
+                status: 500,
+                msg: '退出失败'
+            }
+        }
     }
 }
 
