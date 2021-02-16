@@ -4,7 +4,7 @@
  * @Autor: chengDong
  * @Date: 2021-01-31 00:08:36
  * @LastEditors: chengDong
- * @LastEditTime: 2021-02-16 21:51:24
+ * @LastEditTime: 2021-02-16 23:10:00
  */
 /* eslint valid-jsdoc: "off" */
 
@@ -35,7 +35,13 @@ module.exports = appInfo => {
     dialect: 'mysql',
     host: '127.0.0.1',
     port: 3306,
+    user: 'root',
+    password: '123456',
     database: 'egg_house',
+    define: {
+      timestamps: false,
+      freezeTableName: true
+    }
   };
   config.security = {
     csrf: {
@@ -55,6 +61,7 @@ module.exports = appInfo => {
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
+    salt: 'geewise'
   };
 
   return {
