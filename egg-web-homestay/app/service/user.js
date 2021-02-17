@@ -4,7 +4,7 @@
  * @Autor: chengDong
  * @Date: 2021-01-31 10:18:38
  * @LastEditors: chengDong
- * @LastEditTime: 2021-02-17 02:04:37
+ * @LastEditTime: 2021-02-17 11:14:18
  */
 'use strict';
 const md5 = require('md5')
@@ -28,6 +28,18 @@ class UserService extends BaseService {
       return result
     })
   } 
+
+  async edit(params) {
+    return this.run(async () => {
+      const {ctx} = this;
+      const result = await ctx.model.User.update(params,{
+        where:{
+          username: ctx.username
+        }
+      })
+      return result
+    })
+  }
 }
 
 module.exports = UserService;

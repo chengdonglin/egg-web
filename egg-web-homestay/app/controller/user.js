@@ -4,7 +4,7 @@
  * @Autor: chengDong
  * @Date: 2021-02-16 22:51:08
  * @LastEditors: chengDong
- * @LastEditTime: 2021-02-17 01:54:37
+ * @LastEditTime: 2021-02-17 11:10:52
  */
 'use strict';
 const md5 = require('md5')
@@ -150,6 +150,15 @@ class UserController extends BaseController{
             // }
             this.error('退出失败')
         }
+    }
+
+    async edit() {
+        const { ctx } = this
+        const result = await ctx.service.user.edit({
+            ...ctx.params(),
+            updateTime: ctx.helper.time()
+        })
+        this.success(result)
     }
 }
 
