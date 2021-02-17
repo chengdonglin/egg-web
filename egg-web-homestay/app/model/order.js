@@ -4,7 +4,7 @@
  * @Autor: chengDong
  * @Date: 2021-02-17 20:27:34
  * @LastEditors: chengDong
- * @LastEditTime: 2021-02-17 20:31:28
+ * @LastEditTime: 2021-02-17 21:25:20
  */
 module.exports = app => {
     const {
@@ -13,14 +13,15 @@ module.exports = app => {
         DATE
     } = app.Sequelize;
 
-    const Orders = app.define('orders',{
+    const Orders = app.model.define('orders',{
         id: {
             type: INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
         orderNumber: {
-            type: STRING(32)
+            type: STRING(32),
+            field: 'order_number' 
         },
         userId: {
             type: INTEGER
@@ -44,7 +45,13 @@ module.exports = app => {
             }
         },
     })
-
+  
+    Orders.associate = () => {
+        app.model.Order.belongsTo(app.model.House,{
+            foreignKey: 'houseId',
+            as: 'house'
+        })
+    }
     return Orders;
 }
 

@@ -4,7 +4,7 @@
  * @Autor: chengDong
  * @Date: 2021-01-31 00:08:36
  * @LastEditors: chengDong
- * @LastEditTime: 2021-02-17 18:36:17
+ * @LastEditTime: 2021-02-17 21:02:01
  */
 'use strict';
 
@@ -29,4 +29,9 @@ module.exports = app => {
 
   router.post('/api/comment/add',controller.comment.add)
   router.post('/api/comment/list',controller.comment.list)
+
+  router.post('/api/order/hasOrder',userExist,controller.order.hasOrder)
+  router.post('/api/order/add',userExist,controller.order.addOrder)
+  router.post('/api/order/del',userExist,controller.order.delOrder)
+  router.post('/api/order/list',userExist,controller.order.list)
 };
