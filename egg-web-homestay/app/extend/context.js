@@ -4,7 +4,7 @@
  * @Autor: chengDong
  * @Date: 2021-01-31 17:37:03
  * @LastEditors: chengDong
- * @LastEditTime: 2021-02-17 00:39:49
+ * @LastEditTime: 2021-02-17 21:55:37
  */
 module.exports = {
     // 通用方式获取get post请求的参数
@@ -26,5 +26,12 @@ module.exports = {
         this.app.jwt.verify(token,this.app.config.jwt.secret)
         : undefined
         return tokenCache ? tokenCache.username : undefined
+    },
+    get userId() {
+        const token = this.request.header.token
+        const tokenCache = token ? 
+        this.app.jwt.verify(token,this.app.config.jwt.secret)
+        : undefined
+        return tokenCache ? tokenCache.id : undefined
     }
 }

@@ -4,7 +4,7 @@
  * @Autor: chengDong
  * @Date: 2021-02-16 22:51:08
  * @LastEditors: chengDong
- * @LastEditTime: 2021-02-17 11:10:52
+ * @LastEditTime: 2021-02-17 21:54:28
  */
 'use strict';
 const md5 = require('md5')
@@ -13,12 +13,15 @@ class UserController extends BaseController{
     /**
      * 颁布jwt密钥
      */
-    async jwtSign() {
+    async jwtSign({
+        id, username
+    }) {
         const { ctx, app } = this;
         // const username = ctx.request.body.username;
-        const username = ctx.params('username');
+        //const username = ctx.params('username');
         const token = app.jwt.sign({
-            username
+            username,
+            id
         },app.config.jwt.secret);
         await app.redis.set(username,token,'EX',7*24*60*60)
         return token;
@@ -45,7 +48,10 @@ class UserController extends BaseController{
             this.error('用户名已存在')
             return
         }
-        const token = await this.jwtSign()
+        const token = await this.jwtSign({
+            id: user.id,
+            username: user.username
+        })
         const result = await ctx.service.user.add({
             ...params,
             password: md5(params.password + app.config.salt),
@@ -89,7 +95,10 @@ class UserController extends BaseController{
         // }
         this.error('用户名或者密码错误')
        } else {
-           const token = await this.jwtSign()
+           const token = await this.jwtSign({
+            id: user.id,
+            username: user.username
+           })
             // ctx.body = {
             //     status: 200,
             //     msg:'登录成功',

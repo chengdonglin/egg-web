@@ -4,16 +4,16 @@
  * @Autor: chengDong
  * @Date: 2021-02-17 14:09:49
  * @LastEditors: chengDong
- * @LastEditTime: 2021-02-17 21:47:36
+ * @LastEditTime: 2021-02-17 21:56:47
  */
 const BaseController = require('./base')
 
 class OrderController extends BaseController {
     async hasOrder() {
         const { ctx, app } = this;
-        const user = await ctx.service.user.getUser(ctx.username)
+        // const user = await ctx.service.user.getUser(ctx.username)
         const result = await ctx.service.order.hasOrder({
-            userId: user.id,
+            userId: ctx.userId,//user.id,
             houseId: ctx.params("houseId")
         })
         this.success(result)
@@ -21,9 +21,9 @@ class OrderController extends BaseController {
 
     async addOrder() {
         const { ctx, app } = this;
-        const user = await ctx.service.user.getUser(ctx.username)
+        // const user = await ctx.service.user.getUser(ctx.username)
         const result = await ctx.service.order.addOrder({
-            userId: user.id,
+            userId: ctx.userId,//user.id,
             houseId: ctx.params("houseId"),
             isPayed: 0,
             createTime: ctx.helper.time()
@@ -42,7 +42,7 @@ class OrderController extends BaseController {
         const user = await ctx.service.user.getUser(ctx.username)
         const result = await ctx.service.order.list({
             ...ctx.params(),
-            userId: user.id
+            userId: ctx.userId,//user.id,
         })
         this.success(result)
     }
