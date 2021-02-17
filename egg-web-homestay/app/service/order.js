@@ -4,7 +4,7 @@
  * @Autor: chengDong
  * @Date: 2021-02-17 18:15:23
  * @LastEditors: chengDong
- * @LastEditTime: 2021-02-17 21:21:57
+ * @LastEditTime: 2021-02-17 21:49:27
  */
 const BaseService = require('./base')
 
@@ -79,6 +79,30 @@ class OrderService extends BaseService {
                         ]
                     }
                 ]
+            })
+            return result
+        })
+    }
+
+
+    async getOrderById(id) {
+        return await this.ctx.model.Order.findByPk(id)
+    }
+
+    async pay(params) {
+        return this.run(async () => {
+            const {
+                ctx,
+                app
+            } = this;
+            const result = await ctx.model.Order.update({
+                isPayed: 1,
+                orderNumber: params.orderNumber,
+                updateTime: ctx.helper.time()
+            },{
+                where:{
+                    id: params.id
+                }
             })
             return result
         })

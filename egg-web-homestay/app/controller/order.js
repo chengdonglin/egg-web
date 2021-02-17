@@ -4,7 +4,7 @@
  * @Autor: chengDong
  * @Date: 2021-02-17 14:09:49
  * @LastEditors: chengDong
- * @LastEditTime: 2021-02-17 21:28:19
+ * @LastEditTime: 2021-02-17 21:47:36
  */
 const BaseController = require('./base')
 
@@ -45,6 +45,40 @@ class OrderController extends BaseController {
             userId: user.id
         })
         this.success(result)
+    }
+
+    /**
+     * todo: 添加事务
+     */
+    async pay() {
+       try {
+        const { ctx, app } = this;
+        const { id } = ctx.params()
+        const order = await ctx.service.order.getOrderById(id)
+        if(order) {
+            const beforePay = await this.invokePay({id})
+            const result = await ctx.service.order.pay({
+                id,
+                orderNumber: beforePay.orderNumber
+            })
+            this.success(result)
+        } else {
+            this.error("订单不存在")
+        }
+       } catch (error) {
+           console.log(error)
+           this.error("订单支付失败")
+       }
+    }
+
+    /**
+     * 模拟订单支付
+     * @param {*} params 
+     */
+    async invokePay(params) {
+        return {
+            orderNumber: params.id + new Date().getTime()
+        }
     }
 }
 
