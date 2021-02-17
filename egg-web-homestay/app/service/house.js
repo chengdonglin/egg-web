@@ -4,7 +4,7 @@
  * @Autor: chengDong
  * @Date: 2021-02-17 14:26:04
  * @LastEditors: chengDong
- * @LastEditTime: 2021-02-17 16:21:50
+ * @LastEditTime: 2021-02-17 18:12:22
  */
 
 'use strict';
@@ -91,6 +91,35 @@ class HouseService extends BaseService {
         })
         return result
        })
+    }
+
+    async detail(id) {
+        return this.run(async() => {
+            const {
+                ctx,
+                app
+            } = this; 
+            const result = await ctx.model.House.findOne({
+                where:{
+                    id
+                },
+                include:[
+                    {
+                        model: app.model.Imgs,
+                        attributes:['url']
+                    }
+                ]
+            })
+            // 浏览一次 展示次数+1
+            await ctx.model.House.update({
+                showCount: result.showCount + 1
+            },{
+                where:{
+                    id
+                }
+            })
+            return result
+        })
     }
 }
 

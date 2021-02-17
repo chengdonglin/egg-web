@@ -4,7 +4,7 @@
  * @Autor: chengDong
  * @Date: 2021-02-17 12:19:28
  * @LastEditors: chengDong
- * @LastEditTime: 2021-02-17 15:55:06
+ * @LastEditTime: 2021-02-17 18:11:14
  */
 module.exports = app => {
     const {
@@ -33,7 +33,10 @@ module.exports = app => {
             type: INTEGER
         },
         publishTime: {
-            type: DATE
+            type: DATE,
+            get() {
+                return new Date(this.getDataValue('publishTime')).getTime()
+            }
         },
         cityCode: {
             type: INTEGER
@@ -42,10 +45,17 @@ module.exports = app => {
             type: INTEGER
         },
         startTime: {
-            type: DATE
+            type: DATE,
+            get() {
+                return new Date(this.getDataValue('startTime')).getTime()
+            }
         },
         endTime: {
-            type: DATE
+            type: DATE,
+            // 获取时间,自动转为时间戳
+            get() {
+                return new Date(this.getDataValue('endTime')).getTime()
+            }
         }
     })
      // 一个房子对应多个图片, hasMany
