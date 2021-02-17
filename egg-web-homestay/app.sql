@@ -40,3 +40,14 @@ create table IF not EXISTS`comment`(
     `createTime` timestamp comment '评论时间',
      primary key(`id`)
 ) engine=InnoDB auto_increment=1 default charset=utf8 comment='评论表';
+
+create table IF not EXISTS `orders`(
+    `id` int not null auto_increment,
+    `order_number` varchar(20) default null comment '订单编号',
+    `userId` int not null comment '用户id',
+    `houseId` int not null comment '房屋Id',
+    `isPayed` int default 0 comment '是否支付,0-未支付,1-已支护',
+    `createTime` timestamp comment '创建时间',
+    `updateTime` timestamp  comment '更新时间',
+     primary key(`id`)
+)engine=InnoDB auto_increment=1 default charset=utf8 comment='订单表';
