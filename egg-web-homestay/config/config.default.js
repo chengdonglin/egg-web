@@ -4,7 +4,7 @@
  * @Autor: chengDong
  * @Date: 2021-01-31 00:08:36
  * @LastEditors: chengDong
- * @LastEditTime: 2021-02-17 01:05:48
+ * @LastEditTime: 2021-02-17 23:13:33
  */
 /* eslint valid-jsdoc: "off" */
 
@@ -61,6 +61,7 @@ module.exports = appInfo => {
     exclude: ['/api/user/login','/api/user/register']
   }
 
+  config.allowHosts = ["localhost:7001","127.0.0.1:7001"];
   config.customLogger = {
     web:{
       file: path.join(appInfo.root,'logs/web.log')

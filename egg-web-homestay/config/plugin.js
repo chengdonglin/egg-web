@@ -4,7 +4,7 @@
  * @Autor: chengDong
  * @Date: 2021-01-31 00:08:36
  * @LastEditors: chengDong
- * @LastEditTime: 2021-02-17 13:57:44
+ * @LastEditTime: 2021-02-17 23:03:09
  */
 'use strict';
 
@@ -33,6 +33,11 @@ exports.streamid = {
 exports.notFound = {
   enable: true,
   path: path.join(__dirname,'../lib/plugin/egg-notFound')
+}
+
+exports.allowHosts= {
+  enable: true,
+  path: path.join(__dirname,'../lib/plugin/egg-allowHosts')
 }
 
 exports.jwt = {
