@@ -4,7 +4,7 @@
  * @Autor: chengDong
  * @Date: 2021-01-31 00:08:36
  * @LastEditors: chengDong
- * @LastEditTime: 2021-02-17 11:13:00
+ * @LastEditTime: 2021-02-17 14:13:51
  */
 'use strict';
 
@@ -19,4 +19,8 @@ module.exports = app => {
   router.get('/api/user/detail', userExist, controller.user.detail)
   router.get('/api/user/logout',controller.user.logout)
   router.post('/api/user/edit',controller.user.edit)
+
+  router.post('/api/commons/citys',controller.commons.citys)
+
+  router.get('/api/house/hot',controller.house.hot)
 };

@@ -4,7 +4,7 @@
  * @Autor: chengDong
  * @Date: 2021-02-17 12:19:28
  * @LastEditors: chengDong
- * @LastEditTime: 2021-02-17 13:42:50
+ * @LastEditTime: 2021-02-17 15:55:06
  */
 module.exports = app => {
     const {
@@ -48,5 +48,11 @@ module.exports = app => {
             type: DATE
         }
     })
+     // 一个房子对应多个图片, hasMany
+     House.associate = () => {
+        app.model.House.hasMany(app.model.Imgs, { // 关联的模型
+            foreignKey: 'houseId' // 关联的字段
+        })
+    }
     return House;
 }
