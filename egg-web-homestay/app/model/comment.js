@@ -4,7 +4,7 @@
  * @Autor: chengDong
  * @Date: 2021-02-17 12:19:28
  * @LastEditors: chengDong
- * @LastEditTime: 2021-02-17 13:41:43
+ * @LastEditTime: 2021-02-17 20:13:12
  */
 module.exports = app => {
     const {
@@ -33,5 +33,11 @@ module.exports = app => {
             type: DATE
         }
     })
+    Comment.associate = () => {
+        // 多对一
+        app.model.Comment.belongsTo(app.model.User,{
+            foreignKey: 'userId'
+        })
+    }
     return Comment;
 }

@@ -4,7 +4,7 @@
  * @Autor: chengDong
  * @Date: 2021-01-31 00:08:36
  * @LastEditors: chengDong
- * @LastEditTime: 2021-02-17 14:13:51
+ * @LastEditTime: 2021-02-17 18:36:17
  */
 'use strict';
 
@@ -25,4 +25,8 @@ module.exports = app => {
   router.get('/api/house/hot',controller.house.hot)
   router.post('/api/house/search',controller.house.search)
   router.post('/api/house/detail',controller.house.detail)
+
+
+  router.post('/api/comment/add',controller.comment.add)
+  router.post('/api/comment/list',controller.comment.list)
 };
