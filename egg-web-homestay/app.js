@@ -4,9 +4,9 @@
  * @Autor: chengDong
  * @Date: 2021-01-31 21:44:45
  * @LastEditors: chengDong
- * @LastEditTime: 2021-02-17 23:04:04
+ * @LastEditTime: 2021-02-18 14:45:50
  */
 module.exports = app => {
-    app.config.coreMiddleware.push(...['streamid','allowHosts','notFound','auth'])
+    app.config.coreMiddleware.push(...['interfaceLimit','streamid','allowHosts','notFound','auth'])
     // app.config.coreMiddleware.push(...['streamid'])
 }
