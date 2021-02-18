@@ -4,7 +4,7 @@
  * @Autor: chengDong
  * @Date: 2021-01-31 00:08:36
  * @LastEditors: chengDong
- * @LastEditTime: 2021-02-17 23:03:09
+ * @LastEditTime: 2021-02-18 15:37:57
  */
 'use strict';
 
@@ -43,6 +43,11 @@ exports.allowHosts= {
 exports.interfaceLimit= {
   enable: true,
   path: path.join(__dirname,'../lib/plugin/egg-interfaceLimit')
+}
+
+exports.interfaceCache= {
+  enable: true,
+  path: path.join(__dirname,'../lib/plugin/egg-interfaceCache')
 }
 
 exports.jwt = {

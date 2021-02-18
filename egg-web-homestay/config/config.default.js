@@ -4,7 +4,7 @@
  * @Autor: chengDong
  * @Date: 2021-01-31 00:08:36
  * @LastEditors: chengDong
- * @LastEditTime: 2021-02-18 15:20:05
+ * @LastEditTime: 2021-02-18 15:44:35
  */
 /* eslint valid-jsdoc: "off" */
 
@@ -65,6 +65,10 @@ module.exports = appInfo => {
   config.interfaceLimit = {
     maxCount: 3,
     time: 3 * 1000
+  }
+  config.interfaceCache = {
+    expire: 10,
+    include:['/api/user/detail']
   }
   config.customLogger = {
     web:{
