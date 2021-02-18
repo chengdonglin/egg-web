@@ -30,8 +30,9 @@
     "node": ">=10.0.0"
   },
   "scripts": {
-    "start": "egg-scripts start --daemon --title=egg-server-egg-web-base",
-    "stop": "egg-scripts stop --title=egg-server-egg-web-base",
+    "start": "egg-scripts start --daemon --title=egg-server-egg-web-homestay",
+    "prod": "EGG_SERVER_ENV=prod egg-scripts start --title=egg-server-egg-web-homestay-prod",
+    "stop": "egg-scripts stop --title=egg-server-egg-web-homestay",
     "dev": "egg-bin dev",
     "debug": "egg-bin debug",
     "test": "npm run lint -- --fix && npm run test-local",

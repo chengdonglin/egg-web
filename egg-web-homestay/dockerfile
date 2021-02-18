@@ -1,0 +1,20 @@
+# 使用node镜像
+FROM daocloud.io/library/node:12.18
+# 在容器新建目录文件夹 egg
+RUN mkdir -p /egg
+# 将/egg设置为默认工作目录
+WORKDIR /egg
+# 复制package.json到默认工作目录
+COPY package.json /egg/package.json
+# 安装依赖
+RUN npm config set register https://registry.npm.taobao.org
+RUN npm install --production
+# copy代码到容器
+COPY ./ /egg
+# 暴露7001断口
+EXPOSE 7001
+# 等容器启动之后执行脚本
+CMD npm run prod
+
+
+# 构建命令 docker build -t egg:v1.0 ./dockerfile在的目录
